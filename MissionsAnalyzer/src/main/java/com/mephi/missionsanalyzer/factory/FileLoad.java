@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mephi.missionsanalyzer;
+package com.mephi.missionsanalyzer.factory;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,7 +21,12 @@ public class FileLoad {
     private InputStream inputStream = null;
     private String format = "";
     
+    public String getFilePath(){
+        return filePath;
+    }
+    
     public void setFile(String filePath) throws FileNotFoundException {
+        this.filePath=filePath;
         File file=new File(filePath);
         this.inputStream=new FileInputStream(file);
     }
