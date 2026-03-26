@@ -18,7 +18,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.mephi.maven1.Main</mainClass>
+                  <mainClass>com.mephi.missionsanalyzer.MissionsAnalyzer</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -28,7 +28,7 @@
     </plugins>
   </build>
   <properties>
-    <maven.compiler.release>25</maven.compiler.release>
+    <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <exec.mainClass>com.mephi.missionsanalyzer.MissionsAnalyzer</exec.mainClass>
     <jackson.version>2.4.4</jackson.version>
