@@ -8,7 +8,7 @@ import com.mephi.missionsanalyzer.factory.Parser;
 import com.mephi.missionsanalyzer.factory.FileLoad;
 import com.mephi.missionsanalyzer.missionComponents.Curse;
 import com.mephi.missionsanalyzer.missionComponents.Mission;
-import com.mephi.missionsanalyzer.missionComponents.Sourcerer;
+import com.mephi.missionsanalyzer.missionComponents.Sorcerer;
 import com.mephi.missionsanalyzer.missionComponents.Technique;
 import java.io.BufferedReader;
 import java.io.File;
@@ -32,7 +32,7 @@ public class TxtParser implements Parser{
     public Mission parse() throws IOException {
         Mission mission=new Mission();
         Curse curse = new Curse();
-        List<Sourcerer> sourcerers = new ArrayList<>();
+        List<Sorcerer> sorcerers = new ArrayList<>();
         List<Technique> techniques = new ArrayList<>();
         
         String line;
@@ -68,18 +68,18 @@ public class TxtParser implements Parser{
             else if (key.equals("curse.threatLevel")) {
                 curse.setThreatLevel(value);
             }
-            else if (key.startsWith("sourcerer")) {
+            else if (key.startsWith("sorcerer")) {
                 int leftBracketInd = key.indexOf("[");
                 int rightBracketInd = key.indexOf("]");
                 int soursererInd = Integer.parseInt(key.substring(leftBracketInd+1, rightBracketInd));
-                while (sourcerers.size()<=soursererInd) {
-                    sourcerers.add(new Sourcerer());
+                while (sorcerers.size()<=soursererInd) {
+                    sorcerers.add(new Sorcerer());
                 }
                 if (key.trim().endsWith("name")) {
-                    sourcerers.get(soursererInd).setName(value);
+                    sorcerers.get(soursererInd).setName(value);
                 }
                 if (key.trim().endsWith("rank")) {
-                    sourcerers.get(soursererInd).setRank(value);
+                    sorcerers.get(soursererInd).setRank(value);
                 }
             }
             else if (key.startsWith("technique")) {
@@ -112,7 +112,7 @@ public class TxtParser implements Parser{
         br.close();
         mission.setCurse(curse);
         mission.setTechniques(techniques);
-        mission.setSourcerers(sourcerers);
+        mission.setSorcerers(sorcerers);
         return mission;
     }
 }

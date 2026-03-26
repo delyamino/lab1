@@ -1,5 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbf://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mephi.missionsanalyzer.missionComponents;
@@ -21,8 +21,8 @@ public class Mission {
     private String comment;
     private String note;
     
-    private List<Sourcerer> sourcerers = new ArrayList<>();
-    private List<Technique> techniques = new ArrayList<>();
+    private List<Sorcerer> sorcerer = new ArrayList<>();
+    private List<Technique> technique = new ArrayList<>();
     private Curse curse;
     
     public void setMissionId(String missionId) {
@@ -57,12 +57,12 @@ public class Mission {
         this.curse=curse;
     }
     
-    public void setSourcerers(List<Sourcerer> sourcerers) {
-        this.sourcerers=sourcerers;
+    public void setSorcerers(List<Sorcerer> sourcerer) {
+        this.sorcerer=sourcerer;
     }
     
-    public void setTechniques(List<Technique> techniques) {
-        this.techniques=techniques;
+    public void setTechniques(List<Technique> technique) {
+        this.technique=technique;
     }
     
     public String getMissionId() {
@@ -97,11 +97,11 @@ public class Mission {
         return curse;
     }
     
-    public List<Sourcerer> getSourcerers() {
-        return sourcerers;
+    public List<Sorcerer> getSorcerers() {
+        return sorcerer;
     }
     
     public List<Technique> getTechniques() {
-        return techniques;
+        return technique;
     }
 }

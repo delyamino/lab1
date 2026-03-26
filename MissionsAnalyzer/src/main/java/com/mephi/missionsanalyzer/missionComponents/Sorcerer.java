@@ -10,7 +10,7 @@ import com.mephi.missionsanalyzer.enums.Rank;
  *
  * @author panda
  */
-public class Sourcerer {
+public class Sorcerer {
     private String name;
     private Rank rank;
     
