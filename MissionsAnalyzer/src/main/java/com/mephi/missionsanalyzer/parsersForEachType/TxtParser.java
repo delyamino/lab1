@@ -72,7 +72,7 @@ public class TxtParser implements Parser{
                 int leftBracketInd = key.indexOf("[");
                 int rightBracketInd = key.indexOf("]");
                 int soursererInd = Integer.parseInt(key.substring(leftBracketInd+1, rightBracketInd));
-                if (sourcerers.size()<=soursererInd) {
+                while (sourcerers.size()<=soursererInd) {
                     sourcerers.add(new Sourcerer());
                 }
                 if (key.trim().endsWith("name")) {
@@ -86,7 +86,7 @@ public class TxtParser implements Parser{
                 int leftBracketInd = key.indexOf("[");
                 int rightBracketInd = key.indexOf("]");
                 int techniqueInd = Integer.parseInt(key.substring(leftBracketInd+1, rightBracketInd));
-                if (techniques.size()<=techniqueInd) {
+                while (techniques.size()<=techniqueInd) {
                     techniques.add(new Technique());
                 }
                 if (key.trim().endsWith("name")) {

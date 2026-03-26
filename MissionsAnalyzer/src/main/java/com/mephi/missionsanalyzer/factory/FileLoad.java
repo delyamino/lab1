@@ -29,6 +29,9 @@ public class FileLoad {
         this.filePath=filePath;
         File file=new File(filePath);
         this.inputStream=new FileInputStream(file);
+        if (!file.exists()) {
+            throw new FileNotFoundException("Файл не найден");
+        }
     }
     
     public InputStream getFile(){
@@ -49,7 +52,7 @@ public class FileLoad {
             return format = "xml";
         }
         else{
-            return "Формат данных в файле не соответствует расширению файла";
+            throw new IllegalArgumentException("Invalid file format");
         }
     }
 }

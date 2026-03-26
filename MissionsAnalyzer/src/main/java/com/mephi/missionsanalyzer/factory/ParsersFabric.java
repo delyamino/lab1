@@ -22,11 +22,14 @@ public class ParsersFabric {
         if (format.equals("txt")) {
             return new TxtParser(filePath);
         }
-        if (format.equals("xml")) {
+        else if (format.equals("xml")) {
             return new XMLParser(filePath);
         }
-        if (format.equals("json")) {
+        else if (format.equals("json")) {
             return new JsonParser(filePath);
         }
-    }
+        else {
+            throw new IllegalArgumentException("Unsupported format: " + format);
+        }
+     }
 }

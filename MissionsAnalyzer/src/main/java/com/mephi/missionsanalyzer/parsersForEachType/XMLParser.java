@@ -4,13 +4,27 @@
  */
 package com.mephi.missionsanalyzer.parsersForEachType;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.mephi.missionsanalyzer.factory.Parser;
+import com.mephi.missionsanalyzer.missionComponents.Mission;
+import java.io.File;
+import java.io.IOException;
+
 /**
  *
  * @author panda
  */
-public class XMLParser {
-
-    public XMLParser(String filePath) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+public class XMLParser implements Parser{
+    private String filePath;
+    
+    public XMLParser (String filePath) {
+        this.filePath=filePath;
+    }
+    
+    @Override
+    public Mission parse() throws IOException{
+        XmlMapper mapper = new XmlMapper();
+        File file = new File(filePath);
+        return mapper.readValue(file, Mission.class);
     }
 }

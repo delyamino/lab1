@@ -4,14 +4,17 @@
  */
 package com.mephi.missionsanalyzer.parsersForEachType;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mephi.missionsanalyzer.factory.Parser;
 import com.mephi.missionsanalyzer.missionComponents.Mission;
+import java.io.File;
 import java.io.IOException;
 
 /**
  *
  * @author panda
  */
-public class JsonParser {
+public class JsonParser implements Parser{
     private String filePath;
 
     public JsonParser(String filePath) {
@@ -21,7 +24,7 @@ public class JsonParser {
     @Override
     public Mission parse() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File(filePath), Mission.class);
+        File file = new File(filePath);
+        return mapper.readValue(file, Mission.class);
     }
-}
 }
