@@ -4,10 +4,13 @@
  */
 package com.mephi.missionsanalyzer.factory;
 
+import com.mephi.missionsanalyzer.missionComponents.Mission;
+import java.io.IOException;
+
 /**
  *
  * @author panda
  */
 public interface Parser {
-    String parse();
+    Mission parse() throws IOException;
 }

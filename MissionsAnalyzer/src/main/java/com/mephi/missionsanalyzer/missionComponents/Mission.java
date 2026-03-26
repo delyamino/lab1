@@ -18,10 +18,11 @@ public class Mission {
     private String location;
     private Outcome outcome;
     private int damageCost;
-    private String commentOrNote;
+    private String comment;
+    private String note;
     
-    private List<Sourcerers> sourcerers = new ArrayList<>();
-    private List<Techniques> techniques = new ArrayList<>();
+    private List<Sourcerer> sourcerers = new ArrayList<>();
+    private List<Technique> techniques = new ArrayList<>();
     private Curse curse;
     
     public void setMissionId(String missionId) {
@@ -44,19 +45,23 @@ public class Mission {
         this.damageCost = Integer.parseInt(damageCost);
     }
     
-    public void setCommentOrNote(String commentOrNote) {
-        this.commentOrNote=commentOrNote;
+    public void setComment(String comment) {
+        this.comment=comment;
+    }
+    
+    public void setNote(String note) {
+        this.note=note;
     }
     
     public void setCurse(Curse curse) {
         this.curse=curse;
     }
     
-    public void setSourcerers(List<Sourcerers> sourcerers) {
+    public void setSourcerers(List<Sourcerer> sourcerers) {
         this.sourcerers=sourcerers;
     }
     
-    public void setTechniques(List<Techniques> techniques) {
+    public void setTechniques(List<Technique> techniques) {
         this.techniques=techniques;
     }
     
@@ -80,19 +85,23 @@ public class Mission {
         return damageCost;
     }
     
-    public String getCommentOrNote() {
-        return commentOrNote;
+    public String getComment() {
+        return comment;
+    }
+    
+    public String getNote() {
+        return note;
     }
     
     public Curse getCurse() {
         return curse;
     }
     
-    public List<Sourcerers> getSourcerers() {
+    public List<Sourcerer> getSourcerers() {
         return sourcerers;
     }
     
-    public List<Techniques> getTechniques() {
+    public List<Technique> getTechniques() {
         return techniques;
     }
 }

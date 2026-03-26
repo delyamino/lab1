@@ -17,5 +17,6 @@ public enum Type {
     MAXIMUM_TECHNIQUE,
     BARRIER,
     ANTI_DOMAIN,
-    TEN_SHADOWS
+    TEN_SHADOWS,
+    CURSE
 }

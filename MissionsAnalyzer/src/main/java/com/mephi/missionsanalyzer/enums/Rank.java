@@ -16,5 +16,5 @@ public enum Rank {
     GRADE_2,
     SEMI_GRADE_2,
     GRADE_3,
-    GRADE_4,
+    GRADE_4
 }

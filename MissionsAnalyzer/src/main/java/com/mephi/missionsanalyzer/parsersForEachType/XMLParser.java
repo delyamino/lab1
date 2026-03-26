@@ -9,7 +9,8 @@ package com.mephi.missionsanalyzer.parsersForEachType;
  * @author panda
  */
 public class XMLParser {
-    public String parse() {
-        
+
+    public XMLParser(String filePath) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

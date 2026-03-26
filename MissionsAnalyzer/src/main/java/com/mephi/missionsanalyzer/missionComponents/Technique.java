@@ -10,7 +10,7 @@ import com.mephi.missionsanalyzer.enums.Type;
  *
  * @author panda
  */
-public class Techniques {      
+public class Technique {      
     private String name;
     private Type type;
     private String owner;
