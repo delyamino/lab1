@@ -20,11 +20,12 @@ import java.util.Scanner;
  */
 public class MissionsAnalyzer {
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        try {
+        /*try {
             System.setOut(new PrintStream(System.out, true, "UTF-8"));
         } catch (UnsupportedEncodingException ex) {
             System.getLogger(MissionsAnalyzer.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
+        }*/
+        
         Scanner scanner = new Scanner(System.in);
         
         while (true) {
