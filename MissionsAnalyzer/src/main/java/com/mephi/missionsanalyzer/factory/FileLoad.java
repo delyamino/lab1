@@ -19,15 +19,11 @@ import java.io.InputStream;
 public class FileLoad {
     private String filePath = "";
     
-    public String getFilePath(){
-        return filePath;
-    }
-    
-    public void setFile(String filePath) throws FileNotFoundException {
+    public void setFilePath(String filePath) throws FileNotFoundException {
         this.filePath=filePath;
     }
     
-    public String getFile(){
+    public String getFilePath(){
         return filePath;
     }
     
