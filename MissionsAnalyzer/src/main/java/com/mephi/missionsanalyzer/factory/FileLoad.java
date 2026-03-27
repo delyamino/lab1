@@ -18,8 +18,6 @@ import java.io.InputStream;
  */
 public class FileLoad {
     private String filePath = "";
-    private InputStream inputStream = null;
-    private String format = "";
     
     public String getFilePath(){
         return filePath;
@@ -27,15 +25,10 @@ public class FileLoad {
     
     public void setFile(String filePath) throws FileNotFoundException {
         this.filePath=filePath;
-        File file=new File(filePath);
-        this.inputStream=new FileInputStream(file);
-        if (!file.exists()) {
-            throw new FileNotFoundException("Файл не найден");
-        }
     }
     
-    public InputStream getFile(){
-        return inputStream;
+    public String getFile(){
+        return filePath;
     }
     
     public String formatRecongnise() throws FileNotFoundException, IOException{
@@ -43,16 +36,16 @@ public class FileLoad {
         String firstLine = reader.readLine();
         reader.close();
         if (filePath.endsWith(".txt")&&(firstLine.trim().startsWith("mission"))){
-            return format = "txt";
+            return "txt";
         }
         else if (filePath.endsWith(".json")&&(firstLine.trim().startsWith("{"))){
-            return format = "json";
+            return "json";
         }
         else if (filePath.endsWith(".xml")&&(firstLine.trim().startsWith("<"))){
-            return format = "xml";
+            return "xml";
         }
         else{
-            throw new IllegalArgumentException("Invalid file format");
+            throw new IllegalArgumentException("Неизвестный формат файла");
         }
     }
 }

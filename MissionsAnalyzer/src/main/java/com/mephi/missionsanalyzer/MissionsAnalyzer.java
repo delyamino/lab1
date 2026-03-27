@@ -38,9 +38,10 @@ public class MissionsAnalyzer {
             }
             
             FileLoad fl = new FileLoad();
-            fl.setFile(path);
+            fl.setFilePath(path);
 
-            Parser parser = new ParsersFabric().getParser(fl);
+            ParsersFabric pf = new ParsersFabric();
+            Parser parser = pf.getParser(fl);
             Mission mission = parser.parse();
 
             Output output = new Output();
