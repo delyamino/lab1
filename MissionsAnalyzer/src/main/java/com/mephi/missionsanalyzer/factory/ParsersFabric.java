@@ -29,7 +29,7 @@ public class ParsersFabric {
             return new JsonParser(filePath);
         }
         else {
-            throw new IllegalArgumentException("Unsupported format: " + format);
+            throw new IllegalArgumentException("Неизвестный формат файла");
         }
      }
 }
