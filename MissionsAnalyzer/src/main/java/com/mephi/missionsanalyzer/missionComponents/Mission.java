@@ -21,8 +21,8 @@ public class Mission {
     private String comment;
     private String note;
     
-    private List<Sorcerer> sorcerer = new ArrayList<>();
-    private List<Technique> technique = new ArrayList<>();
+    private List<Sorcerer> sorcerers = new ArrayList<>();
+    private List<Technique> techniques = new ArrayList<>();
     private Curse curse;
     
     public void setMissionId(String missionId) {
@@ -57,12 +57,12 @@ public class Mission {
         this.curse=curse;
     }
     
-    public void setSorcerers(List<Sorcerer> sourcerer) {
-        this.sorcerer=sourcerer;
+    public void setSorcerers(List<Sorcerer> sourcerers) {
+        this.sorcerers=sourcerers;
     }
     
-    public void setTechniques(List<Technique> technique) {
-        this.technique=technique;
+    public void setTechniques(List<Technique> techniques) {
+        this.techniques=techniques;
     }
     
     public String getMissionId() {
@@ -98,10 +98,10 @@ public class Mission {
     }
     
     public List<Sorcerer> getSorcerers() {
-        return sorcerer;
+        return sorcerers;
     }
     
     public List<Technique> getTechniques() {
-        return technique;
+        return techniques;
     }
 }
