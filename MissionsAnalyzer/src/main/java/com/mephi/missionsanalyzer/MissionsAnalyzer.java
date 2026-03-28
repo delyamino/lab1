@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +28,8 @@ public class MissionsAnalyzer {
         }*/
         
         Scanner scanner = new Scanner(System.in);
+        Output output = new Output();
+        ParsersFabric pf = new ParsersFabric();
         
         while (true) {
             System.out.print("Введите путь к файлу миссии (f для выхода из программы): ");
@@ -37,15 +40,20 @@ public class MissionsAnalyzer {
                 break;
             }
             
-            FileLoad fl = new FileLoad();
-            fl.setFilePath(path);
+            try {
+                FileLoad fl = new FileLoad();
+                fl.setFilePath(path);
 
-            ParsersFabric pf = new ParsersFabric();
-            Parser parser = pf.getParser(fl);
-            Mission mission = parser.parse();
+                Parser parser = pf.getParser(fl);
+                Mission mission = parser.parse();
 
-            Output output = new Output();
-            output.forPrint(mission);
+                output.forPrint(mission);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                        null,"Ошибка при обработке файла:\n" ,"Ошибка",JOptionPane.ERROR_MESSAGE
+                );
+            }
         }
         scanner.close();
     }
