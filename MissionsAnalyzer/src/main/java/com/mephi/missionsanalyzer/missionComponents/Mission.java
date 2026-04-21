@@ -6,6 +6,7 @@ package com.mephi.missionsanalyzer.missionComponents;
 
 import com.mephi.missionsanalyzer.enums.Outcome;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -24,6 +25,52 @@ public class Mission {
     private List<Sorcerer> sorcerers = new ArrayList<>();
     private List<Technique> techniques = new ArrayList<>();
     private Curse curse;
+    private EconomicAssessment economicAssessment;
+    private CivilianImpact civilianImpact;
+    private EnemyActivity enemyActivity;
+    private EnvironmentConditions environmentConditions;
+    private List<OperationTimeline> operationTimelines = new ArrayList<>();
+    private HashMap<String, ArrayList<String>> extraInfo;
+
+    public EconomicAssessment getEconomicAssessment() {
+        return economicAssessment;
+    }
+
+    public void setEconomicAssessment(EconomicAssessment economicAssessment) {
+        this.economicAssessment = economicAssessment;
+    }
+
+    public CivilianImpact getCivilianImpact() {
+        return civilianImpact;
+    }
+
+    public void setCivilianImpact(CivilianImpact civilianImpact) {
+        this.civilianImpact = civilianImpact;
+    }
+
+    public EnemyActivity getEnemyActivity() {
+        return enemyActivity;
+    }
+
+    public void setEnemyActivity(EnemyActivity enemyActivity) {
+        this.enemyActivity = enemyActivity;
+    }
+
+    public EnvironmentConditions getEnvironmentConditions() {
+        return environmentConditions;
+    }
+
+    public void setEnvironmentConditions(EnvironmentConditions environmentConditions) {
+        this.environmentConditions = environmentConditions;
+    }
+
+    public List<OperationTimeline> getOperationTimelines() {
+        return operationTimelines;
+    }
+
+    public void setOperationTimelines(List<OperationTimeline> operationTimelines) {
+        this.operationTimelines = operationTimelines;
+    }
     
     public void setMissionId(String missionId) {
         this.missionId=missionId;
@@ -103,5 +150,13 @@ public class Mission {
     
     public List<Technique> getTechniques() {
         return techniques;
+    }
+    
+    public HashMap<String, ArrayList<String>> getExtraInfo() {
+        return extraInfo;
+    }
+
+    public void setExtraInfo(HashMap<String, ArrayList<String>> otherInfo) {
+        this.extraInfo = otherInfo;
     }
 }
