@@ -159,4 +159,56 @@ public class Mission {
     public void setExtraInfo(HashMap<String, ArrayList<String>> otherInfo) {
         this.extraInfo = otherInfo;
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ID: ").append(CheckForValue.checkForNull(missionId)).append("\n");
+        sb.append("Дата: ").append(CheckForValue.checkForNull(date)).append("\n");
+        sb.append("Локация: ").append(CheckForValue.checkForNull(location)).append("\n");
+        sb.append("Исход: ").append(CheckForValue.checkForNull(outcome)).append("\n");
+        if (damageCost != 0) {
+            sb.append("Ущерб: ").append(damageCost).append(" ¥\n");
+        }
+        if (curse != null) {
+            sb.append(curse);
+        }
+        if (sorcerers != null) {
+            for (Sorcerer s : sorcerers) {
+                sb.append(s);
+            }
+        }
+        if (techniques != null) {
+            for (Technique t : techniques) {
+                sb.append(t);
+            }
+        }
+        if (economicAssessment != null) {
+            sb.append(economicAssessment);
+        }
+        if (civilianImpact != null) {
+            sb.append(civilianImpact);
+        }
+        if (enemyActivity != null) {
+            sb.append(enemyActivity);
+        }
+        if (environmentConditions != null) {
+            sb.append(environmentConditions);
+        }
+        if (operationTimelines != null) {
+            for (OperationTimeline ot : operationTimelines) {
+                sb.append(ot);
+            }
+        }
+        if (note != null) {
+            sb.append("Примечание: ").append(note).append("\n");
+        }
+        if (comment != null) {
+            sb.append("Комментарий: ").append(comment).append("\n");
+        }
+        if (extraInfo != null) {
+            extraInfo.forEach((k, v) -> sb.append(k).append(": ").append(String.join(", ", v)).append("\n"));
+        }
+        return sb.toString();
+    }
 }

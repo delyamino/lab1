@@ -14,14 +14,14 @@ public class EconomicAssessment {
     private int commercialDamage;
     private int transportDamage;
     private int recoveryEstimateDays;
-    private boolean insuranceCovered;
+    private Boolean insuranceCovered;
 
     public int getTotalDamageCost() {
         return totalDamageCost;
     }
 
     public void setTotalDamageCost(String totalDamageCost) {
-        this.totalDamageCost = Integer.parseInt(totalDamageCost);
+        this.totalDamageCost = CheckForValue.parseInt("totalDamageCost", totalDamageCost);
     }
 
     public int getInfrastructureDamage() {
@@ -29,7 +29,7 @@ public class EconomicAssessment {
     }
 
     public void setInfrastructureDamage(String infrastructureDamage) {
-        this.infrastructureDamage = Integer.parseInt(infrastructureDamage);
+        this.infrastructureDamage = CheckForValue.parseInt("infrastructureDamage", infrastructureDamage);
     }
 
     public int getCommercialDamage() {
@@ -37,7 +37,7 @@ public class EconomicAssessment {
     }
 
     public void setCommercialDamage(String commercialDamage) {
-        this.commercialDamage = Integer.parseInt(commercialDamage);
+        this.commercialDamage = CheckForValue.parseInt("commercialDamage", commercialDamage);
     }
 
     public int getTransportDamage() {
@@ -45,7 +45,7 @@ public class EconomicAssessment {
     }
 
     public void setTransportDamage(String transportDamage) {
-        this.transportDamage = Integer.parseInt(transportDamage);
+        this.transportDamage = CheckForValue.parseInt("transportDamage", transportDamage);
     }
 
     public int getRecoveryEstimateDays() {
@@ -53,7 +53,7 @@ public class EconomicAssessment {
     }
 
     public void setRecoveryEstimateDays(String recoveryEstimateDays) {
-        this.recoveryEstimateDays = Integer.parseInt(recoveryEstimateDays);
+        this.recoveryEstimateDays = CheckForValue.parseInt("recoveryEstimateDays", recoveryEstimateDays);
     }
 
     public boolean getInsuranceCovered() {
@@ -61,6 +61,45 @@ public class EconomicAssessment {
     }
 
     public void setInsuranceCovered(String insuranceCovered) {
-        this.insuranceCovered = Boolean.parseBoolean(insuranceCovered);
+        this.insuranceCovered = Boolean.parseBoolean(insuranceCovered.trim());
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Экономическая оценка: ");
+
+        boolean hasData = false;
+
+        if (totalDamageCost != 0) {
+            sb.append("общий ущерб: ").append(totalDamageCost).append(", ");
+            hasData = true;
+        }
+
+        if (infrastructureDamage != 0) {
+            sb.append("инфраструктура: ").append(infrastructureDamage).append(", ");
+            hasData = true;
+        }
+
+        if (commercialDamage != 0) {
+            sb.append("коммерческий ущерб: ").append(commercialDamage).append(", ");
+            hasData = true;
+        }
+
+        if (transportDamage != 0) {
+            sb.append("транспорт: ").append(transportDamage).append(", ");
+            hasData = true;
+        }
+
+        if (recoveryEstimateDays != 0) {
+            sb.append("восстановление (дни): ").append(recoveryEstimateDays).append(", ");
+            hasData = true;
+        }
+
+        if (insuranceCovered != null) {
+            sb.append("страховка: ").append(insuranceCovered);
+            hasData = true;
+        }
+
+        return hasData ? sb.append("\n").toString() : "";
     }
 }

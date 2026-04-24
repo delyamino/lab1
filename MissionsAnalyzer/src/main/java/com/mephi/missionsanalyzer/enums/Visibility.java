@@ -13,6 +13,5 @@ public enum Visibility {
     LOW,
     POOR,
     VERY_POOR,
-    NONE,
-    UNKNOWN
+    NONE
 }

@@ -4,24 +4,29 @@
  */
 package com.mephi.missionsanalyzer.missionComponents;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mephi.missionsanalyzer.enums.Type;
 
 /**
  *
  * @author panda
  */
-public class Technique {      
+public class Technique {   
+    @JsonProperty("n")
+    @JsonAlias({"name"})
     private String name;
     private Type type;
     private String owner;
     private int damage;
+    
     
     public void setName(String name) {
         this.name=name;
     }
     
     public void setType(String type) {
-        this.type=Type.valueOf(type);
+        this.type=CheckForValue.parseEnum(Type.class, type);
     }
     
     public void setOwner(String owner) {
@@ -29,7 +34,7 @@ public class Technique {
     }
     
     public void setDamage(String damage) {
-        this.damage = Integer.parseInt(damage);
+        this.damage = CheckForValue.parseInt("damage", damage);
     }
     
     public String getName() {
@@ -46,5 +51,25 @@ public class Technique {
     
     public int getDamage() {
         return damage;
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Название техники: ")
+          .append(CheckForValue.checkForNull(name))
+          .append(", тип: ")
+          .append(CheckForValue.checkForNull(type))
+          .append(", владелец: ")
+          .append(CheckForValue.checkForNull(owner));
+
+        if (damage != 0) {
+            sb.append(", урон: ");
+            sb.append(damage);
+        }
+
+        sb.append("\n");
+        return sb.toString();
     }
 }

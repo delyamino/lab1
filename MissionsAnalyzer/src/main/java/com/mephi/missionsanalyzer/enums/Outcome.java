@@ -10,5 +10,6 @@ package com.mephi.missionsanalyzer.enums;
  */
 public enum Outcome {
     SUCCESS,
+    PARTIAL_SUCCESS,
     FAILURE
 }

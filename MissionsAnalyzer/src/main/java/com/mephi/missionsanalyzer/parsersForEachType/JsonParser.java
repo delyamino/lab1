@@ -5,7 +5,6 @@
 package com.mephi.missionsanalyzer.parsersForEachType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mephi.missionsanalyzer.factory.Parser;
 import com.mephi.missionsanalyzer.missionComponents.Mission;
 import java.io.File;
 import java.io.IOException;

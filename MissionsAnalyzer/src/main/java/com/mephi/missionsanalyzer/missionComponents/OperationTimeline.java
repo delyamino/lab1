@@ -4,7 +4,9 @@
  */
 package com.mephi.missionsanalyzer.missionComponents;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 
 /**
  *
@@ -14,13 +16,24 @@ public class OperationTimeline {
     private LocalDateTime timestamp;
     private String type;
     private String description;
+    
 
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = LocalDateTime.parse(timestamp);
+    public void setTimestamp(String timeStamp) {
+        if (timeStamp == null || timeStamp.isBlank()) {
+            throw new IllegalArgumentException("Поле timestamp не может быть пустым");
+        }
+
+        try {
+            this.timestamp = LocalDateTime.parse(timeStamp.trim()); 
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException(
+                "Неверный формат timestamp: \"" + timeStamp + "\". Ожидается yyyy-MM-ddTHH:mm:ss"
+            );
+        }
     }
 
     public String getType() {
@@ -39,5 +52,8 @@ public class OperationTimeline {
         this.description = description;
     }
     
-    
+    @Override
+    public String toString() {
+        return  "Время: " + CheckForValue.checkForNull(timestamp) + ", тип: " + CheckForValue.checkForNull(type) + ", описание: " + CheckForValue.checkForNull(description) + "\n";
+    }
 }

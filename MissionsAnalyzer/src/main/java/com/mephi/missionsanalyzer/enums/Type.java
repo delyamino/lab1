@@ -18,5 +18,7 @@ public enum Type {
     BARRIER,
     ANTI_DOMAIN,
     TEN_SHADOWS,
-    CURSE
+    CURSE,
+    BODY,
+    WEAPON
 }

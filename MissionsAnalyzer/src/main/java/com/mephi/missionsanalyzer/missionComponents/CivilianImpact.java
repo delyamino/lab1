@@ -21,7 +21,7 @@ public class CivilianImpact {
     }
 
     public void setEvacuated(String evacuated) {
-        this.evacuated = Integer.parseInt(evacuated);
+        this.evacuated = CheckForValue.parseInt("evacuated", evacuated);
     }
 
     public int getInjured() {
@@ -29,7 +29,7 @@ public class CivilianImpact {
     }
 
     public void setInjured(String injured) {
-        this.injured = Integer.parseInt(injured);
+        this.injured = CheckForValue.parseInt("injured", injured);
     }
 
     public int getMissing() {
@@ -37,16 +37,43 @@ public class CivilianImpact {
     }
 
     public void setMissing(String missing) {
-        this.missing = Integer.parseInt(missing);
+        this.missing = CheckForValue.parseInt("missing", missing);
     }
 
     public PublicExposureRisk getPublicExposureRisk() {
         return publicExposureRisk;
     }
 
-    public void setPublicExposureRisk(PublicExposureRisk publicExposureRisk) {
-        this.publicExposureRisk = publicExposureRisk;
+    public void setPublicExposureRisk(String publicExposureRisk) {
+        this.publicExposureRisk = CheckForValue.parseEnum(PublicExposureRisk.class, publicExposureRisk);
     }
     
-    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Влияние на граждан: ");
+
+        boolean hasData = false;
+
+        if (evacuated != 0) {
+            sb.append("эвакуировано: ").append(evacuated).append(", ");
+            hasData = true;
+        }
+
+        if (injured != 0) {
+            sb.append("пострадавшие: ").append(injured).append(", ");
+            hasData = true;
+        }
+
+        if (missing != 0) {
+            sb.append("пропавшие: ").append(missing).append(", ");
+            hasData = true;
+        }
+
+        if (publicExposureRisk != null) {
+            sb.append("риск раскрытия: ").append(publicExposureRisk);
+            hasData = true;
+        }
+
+        return hasData ? sb.append("\n").toString() : "";
+    }
 }

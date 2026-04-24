@@ -13,6 +13,5 @@ public enum PublicExposureRisk {
     LOW,
     MEDIUM,
     HIGH,
-    CRITICAL,
-    UNKNOWN
+    CRITICAL
 }

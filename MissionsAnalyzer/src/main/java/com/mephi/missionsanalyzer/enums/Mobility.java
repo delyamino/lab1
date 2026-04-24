@@ -13,6 +13,5 @@ public enum Mobility {
     LOW,
     MEDIUM,
     HIGH,
-    EXTREME,
-    UNKNOWN
+    EXTREME
 }

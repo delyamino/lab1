@@ -13,6 +13,5 @@ public enum EscalationRisk {
     LOW,
     MEDIUM,
     HIGH,
-    CRITICAL,
-    UNKNOWN
+    CRITICAL
 }

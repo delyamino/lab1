@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mephi.missionsanalyzer.missionComponents;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mephi.missionsanalyzer.enums.ThreatLevel;
 
 /**
@@ -10,6 +12,8 @@ import com.mephi.missionsanalyzer.enums.ThreatLevel;
  * @author panda
  */
 public class Curse {
+    @JsonProperty("n")
+    @JsonAlias({"name"})
     private String name;
     private ThreatLevel threatLevel;
     
@@ -18,7 +22,7 @@ public class Curse {
     }
     
     public void setThreatLevel(String threatLevel) {
-        this.threatLevel=ThreatLevel.valueOf(threatLevel);
+        this.threatLevel=CheckForValue.parseEnum(ThreatLevel.class, threatLevel);
     }
     
     public String getName() {
@@ -27,5 +31,10 @@ public class Curse {
     
     public ThreatLevel getThreatLevel() {
         return threatLevel;
+    }
+    
+    @Override
+    public String toString() {
+        return "Проклятие: " + CheckForValue.checkForNull(name) + ", угроза: " + CheckForValue.checkForNull(threatLevel) + "\n";
     }
 }

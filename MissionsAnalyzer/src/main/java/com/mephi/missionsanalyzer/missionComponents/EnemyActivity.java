@@ -15,12 +15,36 @@ import java.util.List;
  */
 public class EnemyActivity {
     private String behaviorType;
-    private List<String> targetPriority;
-    private List<String> attackPatterns;
+    private ArrayList<String> targetPriorities = new ArrayList<>();
+    private ArrayList<String> attackPatterns = new ArrayList<>();
+    private String attackPattern;
+    private String targetPriority;
     private Mobility mobility;
     private EscalationRisk escalationRisk;
+
+    public String getTargetPriority() {
+        return targetPriority;
+    }
+
+    public void setTargetPriority(String targetPriority) {
+        this.targetPriority = targetPriority;
+    }
+
+    public void addTargetPriority(String targetPriority) {
+        targetPriorities.add(targetPriority);
+    }
     
+    public String getAttackPattern() {
+        return attackPattern;
+    }
+
+    public void setAttackPattern(String attackPattern) {
+        this.attackPattern = attackPattern;
+    }
     
+    public void addAttackPattern(String attackPattern) {
+        attackPatterns.add(attackPattern);
+    }
 
     public String getBehaviorType() {
         return behaviorType;
@@ -30,19 +54,19 @@ public class EnemyActivity {
         this.behaviorType = behaviorType;
     }
 
-    public List<String> getTargetPriority() {
-        return targetPriority;
+    public ArrayList<String> getTargetPriorities() {
+        return targetPriorities;
     }
 
-    public void setTargetPriority(List<String> targetPriority) {
-        this.targetPriority = targetPriority;
+    public void setTargetPriorities(ArrayList<String> targetPriorities) {
+        this.targetPriorities = targetPriorities;
     }
 
-    public List<String> getAttackPatterns() {
+    public ArrayList<String> getAttackPatterns() {
         return attackPatterns;
     }
 
-    public void setAttackPatterns(List<String> attackPatterns) {
+    public void setAttackPatterns(ArrayList<String> attackPatterns) {
         this.attackPatterns = attackPatterns;
     }
 
@@ -51,7 +75,7 @@ public class EnemyActivity {
     }
 
     public void setMobility(String mobility) {
-        this.mobility = Mobility.valueOf(mobility);
+        this.mobility = CheckForValue.parseEnum(Mobility.class, mobility);
     }
 
     public EscalationRisk getEscalationRisk() {
@@ -59,6 +83,40 @@ public class EnemyActivity {
     }
 
     public void setEscalationRisk(String escalationRisk) {
-        this.escalationRisk = EscalationRisk.valueOf(escalationRisk);
+        this.escalationRisk = CheckForValue.parseEnum(EscalationRisk.class, escalationRisk);
     }
-}
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Активность противника: ");
+
+        boolean hasData = false;
+
+        if (behaviorType != null) {
+            sb.append("тип поведения: ").append(behaviorType).append(", ");
+            hasData = true;
+        }
+
+        if (targetPriority != null) {
+            sb.append("приоритет целей: ").append(targetPriority).append(", ");
+            hasData = true;
+        }
+
+        if (mobility != null) {
+            sb.append("мобильность: ").append(mobility).append(", ");
+            hasData = true;
+        }
+
+        if (escalationRisk != null) {
+            sb.append("риск эскалации: ").append(escalationRisk).append(", ");
+            hasData = true;
+        }
+
+        if (attackPatterns != null && !attackPatterns.isEmpty()) {
+            sb.append("паттерны атак: ").append(attackPatterns);
+            hasData = true;
+        }
+
+        return hasData ? sb.append("\n").toString() : "";
+    }
+    }

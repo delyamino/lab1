@@ -4,57 +4,32 @@
 
 package com.mephi.missionsanalyzer;
 
-import com.mephi.missionsanalyzer.factory.FileLoad;
-import com.mephi.missionsanalyzer.factory.Parser;
-import com.mephi.missionsanalyzer.factory.ParsersFabric;
+import ParseChain.BinaryHandler;
+import ParseChain.JsonHandler;
+import ParseChain.ParserHandler;
+import ParseChain.Txt2Handler;
+import ParseChain.TxtHandler;
+import ParseChain.XMLHandler;
+import ParseChain.YamlHandler;
+import com.mephi.missionsanalyzer.parsersForEachType.Parser;
 import com.mephi.missionsanalyzer.missionComponents.Mission;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author panda
  */
 public class MissionsAnalyzer {
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) {
         /*try {
             System.setOut(new PrintStream(System.out, true, "UTF-8"));
         } catch (UnsupportedEncodingException ex) {
-            System.getLogger(MissionsAnalyzer.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            System.out.println("Ошибка кодировки");
         }*/
         
-        Scanner scanner = new Scanner(System.in);
-        Output output = new Output();
-        ParsersFabric pf = new ParsersFabric();
-        
-        while (true) {
-            System.out.print("Введите путь к файлу миссии (f для выхода из программы): ");
-            String path = scanner.nextLine();
-            path = path.trim().replace("\"", "");
-            
-            if (path.equals("f")) {
-                break;
-            }
-            
-            try {
-                FileLoad fl = new FileLoad();
-                fl.setFilePath(path);
-
-                Parser parser = pf.getParser(fl);
-                Mission mission = parser.parse();
-
-                output.forPrint(mission);
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(
-                        null,"Ошибка при обработке файла:\n" ,"Ошибка",JOptionPane.ERROR_MESSAGE
-                );
-            }
-        }
-        scanner.close();
+        new ConsoleApp().run();
     }
 }

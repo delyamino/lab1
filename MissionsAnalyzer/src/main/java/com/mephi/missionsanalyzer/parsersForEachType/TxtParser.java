@@ -4,10 +4,9 @@
  */
 package com.mephi.missionsanalyzer.parsersForEachType;
 
-import com.mephi.missionsanalyzer.factory.Parser;
-import com.mephi.missionsanalyzer.factory.FileLoad;
 import com.mephi.missionsanalyzer.missionComponents.Curse;
 import com.mephi.missionsanalyzer.missionComponents.Mission;
+import com.mephi.missionsanalyzer.missionComponents.MissionBuilder;
 import com.mephi.missionsanalyzer.missionComponents.Sorcerer;
 import com.mephi.missionsanalyzer.missionComponents.Technique;
 import java.io.BufferedReader;
@@ -30,7 +29,7 @@ public class TxtParser implements Parser{
     }
     @Override
     public Mission parse() throws IOException {
-        Mission mission=new Mission();
+        MissionBuilder builder = new MissionBuilder();
         Curse curse = new Curse();
         List<Sorcerer> sorcerers = new ArrayList<>();
         List<Technique> techniques = new ArrayList<>();
@@ -48,19 +47,19 @@ public class TxtParser implements Parser{
             String key=line.split(":",2)[0];
             String value=line.split(":",2)[1].trim();
             if (key.equals("missionId")){
-                mission.setMissionId(value);
+                builder.missionId(value);
             }
             else if (key.equals("date")) {
-                mission.setDate(value);
+                builder.date(value);
             }
             else if (key.equals("location")) {
-                mission.setLocation(value);
+                builder.location(value);
             }
             else if (key.equals("outcome")) {
-                mission.setOutcome(value);
+                builder.outcome(value);
             }
             else if (key.equals("damageCost")) {
-                mission.setDamageCost(value);
+                builder.damageCost(value);
             }
             else if (key.equals("curse.name")) {
                 curse.setName(value);
@@ -103,16 +102,17 @@ public class TxtParser implements Parser{
                 }
             }
             else if (key.equals("note")) {
-                mission.setNote(value);
+                builder.note(value);
             }
             else if (key.equals("comment")) {
-                mission.setComment(value);
+                builder.comment(value);
             } 
         }
         br.close();
-        mission.setCurse(curse);
-        mission.setTechniques(techniques);
-        mission.setSorcerers(sorcerers);
-        return mission;
+        return builder
+            .curse(curse)
+            .sorcerers(sorcerers)
+            .techniques(techniques)
+            .build();
     }
 }

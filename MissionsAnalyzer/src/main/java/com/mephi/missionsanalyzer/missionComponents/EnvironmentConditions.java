@@ -37,7 +37,7 @@ public class EnvironmentConditions {
     }
 
     public void setVisibility(String visibility) {
-        this.visibility = Visibility.valueOf(visibility);
+        this.visibility = CheckForValue.parseEnum(Visibility.class, visibility);
     }
 
     public int getCursedEnergyDensity() {
@@ -45,7 +45,35 @@ public class EnvironmentConditions {
     }
 
     public void setCursedEnergyDensity(String cursedEnergyDensity) {
-        this.cursedEnergyDensity = Integer.parseInt(cursedEnergyDensity);
+        this.cursedEnergyDensity = CheckForValue.parseInt("cursedEnergyDensity", cursedEnergyDensity);
     }
     
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Условия среды: ");
+
+        boolean hasData = false;
+
+        if (weather != null) {
+            sb.append("погода: ").append(weather).append(", ");
+            hasData = true;
+        }
+
+        if (timeOfDay != null) {
+            sb.append("время суток: ").append(timeOfDay).append(", ");
+            hasData = true;
+        }
+
+        if (visibility != null) {
+            sb.append("видимость: ").append(visibility).append(", ");
+            hasData = true;
+        }
+
+        if (cursedEnergyDensity != 0) {
+            sb.append("плотность энергии: ").append(cursedEnergyDensity);
+            hasData = true;
+        }
+
+        return hasData ? sb.append("\n").toString() : "";
+    }
 }
