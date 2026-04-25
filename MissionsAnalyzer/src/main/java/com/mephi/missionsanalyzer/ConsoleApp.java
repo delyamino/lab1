@@ -95,15 +95,18 @@ public class ConsoleApp {
         System.out.println("Выберите тип отчёта:");
         System.out.println("  1 - краткий");
         System.out.println("  2 - полный");
-        String choice = scanner.nextLine().trim();
-        return switch (choice) {
-            case "1" -> new ShortReport();
-            default  -> {
-                if (!choice.equals("2"))
-                    System.out.println("Неизвестный выбор — выбран полный отчёт");
-                yield new FullReport();
+
+        while (true) {
+            String choice = scanner.nextLine().trim();
+            switch (choice) {
+                case "1":
+                    return new ShortReport();
+                case "2":
+                    return new FullReport();
+                default:
+                    System.out.println("Введите 1 или 2:");
             }
-        };
+        }
     }
 
     private ParserHandler buildChain() {
