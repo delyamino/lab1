@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 public class MissionBuilder {
-    private final Mission mission = new Mission();
+    private Mission mission = new Mission();
 
     public MissionBuilder missionId(String id) {
         mission.setMissionId(id);

@@ -25,8 +25,8 @@ import com.mephi.missionsanalyzer.reportsStrategy.ShortReport;
 
 
 public class ConsoleApp {
-    private final ParserHandler parserChain;
-    private final Scanner scanner = new Scanner(System.in);
+    private ParserHandler parserChain;
+    private Scanner scanner = new Scanner(System.in);
 
     public ConsoleApp() {
         this.parserChain = buildChain();
@@ -74,15 +74,17 @@ public class ConsoleApp {
             System.out.println("2 - загрузить новый файл");
             System.out.println("exit - выход");
 
-            switch (scanner.nextLine().trim()) {
+            String cmd = scanner.nextLine().trim();
+
+            switch (cmd) {
                 case "1" -> reportContext.setStrategy(chooseReport());
-                case "2" -> { return; } 
+                case "2" -> { return; }
                 default  -> {
-                    if (scanner.nextLine().trim().equalsIgnoreCase("exit")) {
+                    if (cmd.equalsIgnoreCase("exit")) {
                         System.out.println("Выход.");
                         System.exit(0);
                     } else {
-                        System.out.println("Неизвестная команда");
+                        System.out.println("Неизвестная команда: \"" + cmd + "\"");
                     }
                 }
             }
