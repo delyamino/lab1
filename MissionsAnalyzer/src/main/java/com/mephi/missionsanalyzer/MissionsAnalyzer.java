@@ -4,20 +4,6 @@
 
 package com.mephi.missionsanalyzer;
 
-import ParseChain.BinaryHandler;
-import ParseChain.JsonHandler;
-import ParseChain.ParserHandler;
-import ParseChain.Txt2Handler;
-import ParseChain.TxtHandler;
-import ParseChain.XMLHandler;
-import ParseChain.YamlHandler;
-import com.mephi.missionsanalyzer.parsersForEachType.Parser;
-import com.mephi.missionsanalyzer.missionComponents.Mission;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
-
 /**
  *
  * @author panda

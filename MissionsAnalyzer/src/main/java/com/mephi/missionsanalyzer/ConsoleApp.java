@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mephi.missionsanalyzer;
-import ParseChain.BinaryHandler;
-import ParseChain.JsonHandler;
-import ParseChain.ParserHandler;
-import ParseChain.Txt2Handler;
-import ParseChain.TxtHandler;
-import ParseChain.XMLHandler;
-import ParseChain.YamlHandler;
+import com.mephi.missionsanalyzer.parseChain.JsonHandler;
+import com.mephi.missionsanalyzer.parseChain.XMLHandler;
+import com.mephi.missionsanalyzer.parseChain.YamlHandler;
+import com.mephi.missionsanalyzer.parseChain.TxtHandler;
+import com.mephi.missionsanalyzer.parseChain.Txt2Handler;
+import com.mephi.missionsanalyzer.parseChain.BinaryHandler;
+import com.mephi.missionsanalyzer.parseChain.ParserHandler;
 import com.mephi.missionsanalyzer.missionComponents.Mission;
 import com.mephi.missionsanalyzer.parsersForEachType.Parser;
 import java.util.Scanner;
