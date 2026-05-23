@@ -20,25 +20,38 @@ public class CheckForValue {
     }  
     
     public static <E extends Enum<E>> E parseEnum(Class<E> enumClass, String value) {
-        if (value == null || value.isBlank())
-            throw new IllegalArgumentException(
-                "Значение для " + enumClass.getSimpleName() + " не может быть пустым");
+        if (value == null || value.isBlank()) {
+            return null;
+        }
+            
         try {
             return Enum.valueOf(enumClass, value.trim().toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(
-                "Неверное значение \"" + value + "\" для " + enumClass.getSimpleName() + ", допустимые: " + Arrays.toString(enumClass.getEnumConstants()));
+            return null;
         }
     }
 
     public static int parseInt(String fieldName, String value) {
-        if (value == null || value.isBlank())
+        if (value == null || value.isBlank()) {
+            return 0;
+        }
+        try {
+            int result = Integer.parseInt(value.trim());
+            if (result < 0) {
+                return 0; 
+            }
+            return result;
+        } catch (NumberFormatException e) {
+            return 0; 
+        }
+        
+        /*if (value == null || value.isBlank())
             throw new IllegalArgumentException("Поле " + fieldName + " не может быть пустым");
         try {
             return Integer.parseInt(value.trim());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(
                 "Поле " + fieldName + " должно быть целым числом");
-        }
+        }*/
     }
 }

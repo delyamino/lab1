@@ -1,7 +1,7 @@
 missionId: M-2024-042
 date: 2024-11-03
 location: Токио, заброшенный госпиталь
-outcome: FAILURE
+outcome: 1
 damageCost: 8500000
 
 curse.name: Рёмен Сукуна (фрагмент)

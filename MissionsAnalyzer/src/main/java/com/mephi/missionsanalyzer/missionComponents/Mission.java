@@ -132,11 +132,11 @@ public class Mission {
     }
     
     public void setOutcome(String outcome) {
-        this.outcome=Outcome.valueOf(outcome);
+         this.outcome = CheckForValue.parseEnum(Outcome.class, outcome);
     }
     
     public void setDamageCost(String damageCost) {
-        this.damageCost = Integer.parseInt(damageCost);
+        this.damageCost = CheckForValue.parseInt("damageCost",damageCost);
     }
     
     public void setComment(String comment) {
