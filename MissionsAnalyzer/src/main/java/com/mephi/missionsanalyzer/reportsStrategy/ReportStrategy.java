@@ -11,5 +11,5 @@ import com.mephi.missionsanalyzer.missionComponents.Mission;
  * @author panda
  */
 public interface ReportStrategy {
-    void report(Mission mission);
+    String report(Mission mission);
 }

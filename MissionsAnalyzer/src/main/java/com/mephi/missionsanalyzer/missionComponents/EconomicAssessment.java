@@ -4,11 +4,18 @@
  */
 package com.mephi.missionsanalyzer.missionComponents;
 
+import jakarta.persistence.*;
+
 /**
  *
  * @author panda
  */
+@Entity
 public class EconomicAssessment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private int totalDamageCost;
     private int infrastructureDamage;
     private int commercialDamage;
@@ -16,6 +23,11 @@ public class EconomicAssessment {
     private int recoveryEstimateDays;
     private Boolean insuranceCovered;
 
+    
+    public Long getId() {
+        return id;
+    }
+    
     public int getTotalDamageCost() {
         return totalDamageCost;
     }

@@ -22,6 +22,10 @@ public class ReportContext {
     }
 
     public void executeReport(Mission mission) {
-        strategy.report(mission);
+        System.out.println(strategy.report(mission));
+    }
+    
+    public String generateReport(Mission mission) {
+        return strategy.report(mission);
     }
 }

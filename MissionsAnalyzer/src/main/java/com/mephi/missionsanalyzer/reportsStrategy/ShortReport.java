@@ -12,12 +12,14 @@ import com.mephi.missionsanalyzer.missionComponents.Mission;
  */
 public class ShortReport implements ReportStrategy {
     @Override
-    public void report(Mission mission) {
-        System.out.println("=== Краткий отчёт ===");
-        System.out.println("ID: " + mission.getMissionId());
-        System.out.println("Дата: " + mission.getDate());
-        System.out.println("Локация: " + mission.getLocation());
-        System.out.println("Исход: " + mission.getOutcome());
-        mission.getCurse();
+    public String report(Mission mission) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Краткий отчёт о миссии");
+        sb.append("ID: ").append(mission.getMissionId()).append("\n");
+        sb.append("Дата: ").append(mission.getDate()).append("\n");
+        sb.append("Локация: ").append(mission.getLocation()).append("\n");
+        sb.append("Исход: ").append(mission.getOutcome()).append("\n");
+        sb.append(mission.getCurse()).append("\n");
+        return sb.toString();
     }
 }

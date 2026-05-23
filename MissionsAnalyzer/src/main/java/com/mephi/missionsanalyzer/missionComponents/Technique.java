@@ -7,19 +7,31 @@ package com.mephi.missionsanalyzer.missionComponents;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mephi.missionsanalyzer.enums.Type;
+import jakarta.persistence.*;
 
 /**
  *
  * @author panda
  */
-public class Technique {   
+@Entity
+public class Technique {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     @JsonProperty("n")
     @JsonAlias({"name"})
     private String name;
+    
+    @Enumerated(EnumType.STRING)
     private Type type;
+    
     private String owner;
     private int damage;
     
+    public Long getId() {
+        return id;
+    }
     
     public void setName(String name) {
         this.name=name;

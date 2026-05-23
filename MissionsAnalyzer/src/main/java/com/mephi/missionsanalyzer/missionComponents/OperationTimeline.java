@@ -4,6 +4,7 @@
  */
 package com.mephi.missionsanalyzer.missionComponents;
 
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
@@ -12,12 +13,20 @@ import java.time.format.DateTimeParseException;
  *
  * @author panda
  */
+@Entity
 public class OperationTimeline {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private LocalDateTime timestamp;
     private String type;
     private String description;
     
-
+    public Long getId() {
+        return id;
+    }
+    
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
@@ -54,6 +63,6 @@ public class OperationTimeline {
     
     @Override
     public String toString() {
-        return  "Время: " + CheckForValue.checkForNull(timestamp) + ", тип: " + CheckForValue.checkForNull(type) + ", описание: " + CheckForValue.checkForNull(description) + "\n";
+        return  "    Время: " + CheckForValue.checkForNull(timestamp) + ", тип: " + CheckForValue.checkForNull(type) + ", описание: " + CheckForValue.checkForNull(description) + "\n";
     }
 }

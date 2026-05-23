@@ -20,8 +20,10 @@ import com.mephi.missionsanalyzer.reportsStrategy.ReportStrategy;
  */
 public class FullReport implements ReportStrategy {
     @Override
-    public void report(Mission mission) {
-        System.out.println("=== Полный отчёт о миссии ===");
-        System.out.print(mission); 
+    public String report(Mission mission) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Полный отчёт о миссии\n");
+        sb.append(mission.toString()); 
+        return sb.toString();
     }
 }

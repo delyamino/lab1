@@ -6,6 +6,7 @@ package com.mephi.missionsanalyzer.missionComponents;
 
 import com.mephi.missionsanalyzer.enums.EscalationRisk;
 import com.mephi.missionsanalyzer.enums.Mobility;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +14,35 @@ import java.util.List;
  *
  * @author panda
  */
+@Entity
 public class EnemyActivity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String behaviorType;
-    private ArrayList<String> targetPriorities = new ArrayList<>();
-    private ArrayList<String> attackPatterns = new ArrayList<>();
+    
+    @ElementCollection
+    private List<String> targetPriorities = new ArrayList<>();
+    
+    @ElementCollection
+    private List<String> attackPatterns = new ArrayList<>();
+    
     private String attackPattern;
+    
     private String targetPriority;
+    
+    @Enumerated(EnumType.STRING)
     private Mobility mobility;
+    
+    @Enumerated(EnumType.STRING)
     private EscalationRisk escalationRisk;
 
+    
+    public Long getId() {
+        return id;
+    }
+    
     public String getTargetPriority() {
         return targetPriority;
     }
@@ -54,7 +75,7 @@ public class EnemyActivity {
         this.behaviorType = behaviorType;
     }
 
-    public ArrayList<String> getTargetPriorities() {
+    public List<String> getTargetPriorities() {
         return targetPriorities;
     }
 
@@ -62,7 +83,7 @@ public class EnemyActivity {
         this.targetPriorities = targetPriorities;
     }
 
-    public ArrayList<String> getAttackPatterns() {
+    public List<String> getAttackPatterns() {
         return attackPatterns;
     }
 

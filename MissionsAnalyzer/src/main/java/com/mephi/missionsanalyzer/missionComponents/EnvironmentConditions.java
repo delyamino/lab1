@@ -5,17 +5,31 @@
 package com.mephi.missionsanalyzer.missionComponents;
 
 import com.mephi.missionsanalyzer.enums.Visibility;
+import jakarta.persistence.*;
 
 /**
  *
  * @author panda
  */
+@Entity
 public class EnvironmentConditions {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String weather;
     private String timeOfDay;
+    
+    @Enumerated(EnumType.STRING)
     private Visibility visibility;
+    
     private int cursedEnergyDensity;
 
+    
+    public Long getId() {
+        return id;
+    }
+    
     public String getWeather() {
         return weather;
     }

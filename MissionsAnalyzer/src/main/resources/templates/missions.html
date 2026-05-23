@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Список миссий</title>
+</head>
+<body>
+    <h1>Список миссий</h1>
+    
+    <a href="/">Загрузить новую миссию</a>
+    
+    <br><br>
+    
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>ID Миссии</th>
+            <th>Дата</th>
+            <th>Локация</th>
+            <th>Исход</th>
+            <th>Действия</th>
+        </tr>
+        
+        <tr th:each="m : ${missions}">
+            <td th:text="${m.id}">1</td>
+            <td th:text="${m.missionId}">M-001</td>
+            <td th:text="${m.date}">2024-01-01</td>
+            <td th:text="${m.location}">Локация</td>
+            <td th:text="${m.outcome}">SUCCESS</td>
+            <td>
+                <a th:href="@{/report/{id}(id=${m.id}, type='full')}">Полный отчёт</a>
+                |
+                <a th:href="@{/report/{id}(id=${m.id}, type='short')}">Краткий отчёт</a>
+                |
+                <form th:action="@{/delete/{id}(id=${m.id})}" method="post" style="display:inline">
+                    <button type="submit" onclick="return confirm('Удалить?')">Удалить</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

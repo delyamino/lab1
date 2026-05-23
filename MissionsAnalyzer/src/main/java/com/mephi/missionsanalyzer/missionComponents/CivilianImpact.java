@@ -5,17 +5,30 @@
 package com.mephi.missionsanalyzer.missionComponents;
 
 import com.mephi.missionsanalyzer.enums.PublicExposureRisk;
+import jakarta.persistence.*;
 
 /**
  *
  * @author panda
  */
+@Entity
 public class CivilianImpact {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private int evacuated;
     private int injured;
     private int missing;
+    
+    @Enumerated(EnumType.STRING)
     private PublicExposureRisk publicExposureRisk;
 
+    
+    public Long getId() {
+        return id;
+    }
+    
     public int getEvacuated() {
         return evacuated;
     }

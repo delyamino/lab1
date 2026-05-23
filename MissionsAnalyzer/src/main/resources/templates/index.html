@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Загрузка миссии</title>
+</head>
+<body>
+    <h1>Архив миссий</h1>
+    
+    <form action="/upload" method="post">
+        <label>Путь к файлу:</label>
+        <input type="text" name="path" required size="60">
+        <button type="submit">Загрузить</button>
+    </form>
+    
+    <br>
+    <a href="/missions-view">Просмотреть архив</a>
+    
+    <div th:if="${error}" style="color:red" th:text="${error}"></div>
+    <div th:if="${success}" style="color:green" th:text="${success}"></div>
+</body>
+</html>

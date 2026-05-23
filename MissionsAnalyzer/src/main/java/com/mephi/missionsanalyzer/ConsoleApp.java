@@ -27,8 +27,9 @@ import com.mephi.missionsanalyzer.reportsStrategy.ShortReport;
 public class ConsoleApp {
     private ParserHandler parserChain;
     private Scanner scanner = new Scanner(System.in);
+    
 
-    public ConsoleApp() {
+    public ConsoleApp() { 
         this.parserChain = buildChain();
     }
 
@@ -109,7 +110,7 @@ public class ConsoleApp {
         }
     }
 
-    private ParserHandler buildChain() {
+    public ParserHandler buildChain() {
         ParserHandler json = new JsonHandler();
         ParserHandler xml  = new XMLHandler();
         ParserHandler yaml = new YamlHandler();
